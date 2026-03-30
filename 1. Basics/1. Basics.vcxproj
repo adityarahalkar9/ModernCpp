@@ -134,6 +134,10 @@
     <ClCompile Include="02.keywords.cpp" />
     <ClCompile Include="02.variable.cpp" />
     <ClCompile Include="03.data_types.cpp" />
+    <ClCompile Include="04.functions.cpp" />
+    <ClCompile Include="05.Conditions.cpp" />
+    <ClCompile Include="06.loops_&amp;_control_flow.cpp" />
+    <ClCompile Include="07.size_t_sizeof.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

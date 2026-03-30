@@ -30,6 +30,18 @@
     <ClCompile Include="03.data_types.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="04.functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="05.Conditions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="06.loops_&amp;_control_flow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="07.size_t_sizeof.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basic_header.h">

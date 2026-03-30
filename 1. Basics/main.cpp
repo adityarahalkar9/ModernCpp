@@ -2,6 +2,6 @@ import <iostream>;
 #include "basic_header.h"
 
 int main() {
-    dataTypes();;
+    size_t_size_of();
     return 0;
 }
