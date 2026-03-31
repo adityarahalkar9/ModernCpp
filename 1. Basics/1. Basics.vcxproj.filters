@@ -42,6 +42,15 @@
     <ClCompile Include="07.size_t_sizeof.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="08.arrays.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="09.stl_arrays.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="10.practice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basic_header.h">

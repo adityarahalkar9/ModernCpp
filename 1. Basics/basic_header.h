@@ -22,3 +22,11 @@ void continueStatement();
 void breakStatement();
 
 int size_t_size_of();
+
+int arrays();
+int twoDimensionalArrays();
+int threeDimensionalArray();
+
+int stlArray();
+
+void arrayPractice();
