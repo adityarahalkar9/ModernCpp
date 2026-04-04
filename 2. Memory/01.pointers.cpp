@@ -1,4 +1,5 @@
 import <iostream>;
+import <functional>;
 #include "memory_header.h"
 
 // A pointer is a variable that stores the address of another variable
