@@ -1,3 +1,3 @@
 #pragma once
-int pointer();
-int pointerManipulation();
+int pointers();
+
