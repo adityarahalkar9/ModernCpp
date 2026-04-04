@@ -24,6 +24,12 @@
     <ClCompile Include="02.references.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="03.dynamic_memory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="04.vectors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="memory_header.h">
