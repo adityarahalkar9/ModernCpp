@@ -6,3 +6,4 @@ int passingStructByReference();
 int structuresFromFunctions();
 
 int arrayStructure();
+int nestedStructure();
