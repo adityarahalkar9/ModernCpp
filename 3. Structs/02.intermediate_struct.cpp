@@ -48,3 +48,34 @@ int nestedStructure(){
 
 	return 0;
 }
+
+
+
+// Pointers to structures
+struct Book{
+	std::string title{};
+	std::string author{};
+};
+int pointerToStructure(){
+	Book book1{"Hitchhiker's guide", "Douglas adams"};
+	
+	// Declaring a pointer to a book structure
+	Book* bookptr = &book1;
+
+	// Accessing members using arrow operator
+	std::cout << "Book Title: " << bookptr -> title << std::endl;
+	std::cout << "Book Author: " << bookptr->author << std::endl;
+
+	// Dereferencing the pointer using dot operator
+	std::cout << "Book title(dereferenced): " << (*bookptr).title << std::endl;
+	std::cout << "Book Author(dereferenced): " << (*bookptr).author << std::endl;
+
+	return 0;
+}
+/*
+	This example shows how to work with pointers to structures.
+	Book* bookptr = &book1; declares a pointer bookptr that stores the memory address of the book1
+	structure. To access the members of the structure through the pointer, we use the arrow operator(->).
+	The bookptr->title is equal to (*bookptr).title, where (*bookptr) dereferences the pointer to get
+	the Book structure itself.
+*/
