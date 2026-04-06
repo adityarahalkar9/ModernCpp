@@ -9,4 +9,6 @@ int arrayStructure();
 int nestedStructure();
 int pointerToStructure();
 int structBitfield();
+
 int anonymousStruct();
+int typedefStruct();
