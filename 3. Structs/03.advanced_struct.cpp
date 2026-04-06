@@ -20,3 +20,32 @@ int anonymousStruct(){
 	
 	return 0;
 }
+
+
+
+// Structures tag names & typedef/using
+// Named structures with methods
+struct Address{
+	std::string street{};
+	std::string city{};
+
+	// A method to print address
+	void print() const{
+		std::cout << "Address is: " << street << "," << city << std::endl;
+	}
+};
+struct PersonInfo{
+	std::string name{};
+	int age{};
+};
+typedef struct PersonInfo Person;	// typedef for PersonInfo Person
+using AddressAlias = Address;		// Mpdern style C++ Alias with using
+int typedefStruct(){
+	Person person1{"Eve", 30};
+	AddressAlias addr1{"123 main street", "Anytown"};
+	std::cout << "Person: " << person1.name << ", Age: " << person1.age << "\n";
+	addr1.print();		// Call the print method from address struct
+
+	return 0;
+}
+
