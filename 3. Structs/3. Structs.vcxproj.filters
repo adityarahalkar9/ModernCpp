@@ -24,6 +24,9 @@
     <ClCompile Include="02.intermediate_struct.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="03.advanced_struct.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="struct_header.h">
