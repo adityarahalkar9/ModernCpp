@@ -1,0 +1,9 @@
+#pragma once
+int bClass();
+int accessModifiers();
+
+void basicConstructor();
+void defaultConstructor();
+void parameterisedConstructor();
+void copyConstructor();
+int moveConstructor();
