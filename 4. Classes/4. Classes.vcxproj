@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClCompile Include="01.basic_class.cpp" />
     <ClCompile Include="02.constructors.cpp" />
+    <ClCompile Include="03.destructors.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
