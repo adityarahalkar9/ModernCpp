@@ -148,3 +148,82 @@ int multipleInheritance(){
 
 	return 0;
 }
+
+
+
+// Multilevel inheritance
+/*
+	 A class inherits from a class that itself inherits from another class. 
+	 The chain: Base -> Intermediate -> Derived. Each derived class gets all 
+	 members of its parent(s) plus its own
+*/
+// Base class Person
+class Person{
+protected:
+	// Protected members can be accessed by derived classes
+	std::string name{};
+	int age{};
+public:
+	Person(std::string n, int a) : name(n), age(a){
+		std::cout << "[Person] created: " << name << ", age: " << age << std::endl;
+	}
+	void introduce() const{
+		std::cout << "Hello, I'm " << name << " and I'm " << age << " years old" <<std::endl;
+	}
+};
+// derived class 1
+class Student : public Person{
+protected:
+	std::string school{};
+	int gradeLevel{};
+public:
+	Student(std::string n1, int a1, std::string sch, int grade) : Person{n1, a1}, school{sch}, gradeLevel{grade}{
+		std::cout << "[Student] Created: School = " << school << ", Grade " << gradeLevel << std::endl;;
+	}
+	void study() const{
+		std::cout << name << " is studying at " << school << " (Grade " << gradeLevel << ")." << std::endl;
+	}
+};
+// Derived class 2
+class GraduateStudent : public Student{
+private:
+	std::string thesisTopic{};
+	std::string advisor{};
+public:
+	GraduateStudent(std::string n, int a, std::string sch, int grade, std::string topic, std::string adv) : 
+		Student{n, a, sch, grade}, thesisTopic{topic}, advisor{adv}{
+		std::cout << "[GraduateStudent] Created: Thesis = \"" << thesisTopic << "\", Advisor = " << advisor << std::endl;
+	}
+	void research() const{
+		std::cout << name << " is researching \"" << thesisTopic << "\" under advisor " << advisor << std::endl;
+	}
+	// Show everything accumulated from all three levels
+	void displayFullProfile() const {
+		std::cout << "\n========== FULL PROFILE ==========\n";
+		std::cout << "Name:        " << name << "  (from Person)\n";
+		std::cout << "Age:         " << age << "  (from Person)\n";
+		std::cout << "School:      " << school << "  (from Student)\n";
+		std::cout << "Grade Level: " << gradeLevel << "  (from Student)\n";
+		std::cout << "Thesis:      " << thesisTopic << "  (from GraduateStudent)\n";
+		std::cout << "Advisor:     " << advisor << "  (from GraduateStudent)\n";
+		std::cout << "===================================\n";
+	}
+};
+int multilevelInheritance(){
+	GraduateStudent grad{
+		"Alice Smith",          // name
+		24,                     // age
+		"MIT",                  // school
+		5,                      // grade level (PhD student)
+		"Quantum Algorithms",   // thesis topic
+		"Dr. Robert Chen"       // advisor
+	};
+	std::cout << "\n--- Calling methods from different levels ---\n";
+	grad.introduce();			// From Person
+	grad.study();				// From Student
+	grad.research();			// From GraduateStudent
+	grad.displayFullProfile();	// Combines all levels
+
+	return 0;
+
+}

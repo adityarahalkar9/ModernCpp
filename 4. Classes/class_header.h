@@ -14,3 +14,4 @@ int explicitDestructor();
 int basicInheritance();
 int singleInheritance();
 int multipleInheritance();
+int multilevelInheritance();
