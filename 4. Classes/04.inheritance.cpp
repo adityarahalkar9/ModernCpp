@@ -58,7 +58,7 @@ int basicInheritance(){
 
 
 
-// Single INheritance
+// SINGLE INHERITANCE
 /*
 	In single inheritance, a sub-class is derived from only one super class. It inherits
 	the properties and behavior of a single-parent class. Sometimes, it is also known as
@@ -102,7 +102,7 @@ int singleInheritance(){
 
 
 
-// Multiple Inheritance
+// MULTIPLE INHERITANCE
 /*
 	In Multiple inheritance, one class can have more than one superclass and inherit features
 	from all parent classes.
@@ -151,7 +151,7 @@ int multipleInheritance(){
 
 
 
-// Multilevel inheritance
+// MULTILEVEL INHERITANCE
 /*
 	 A class inherits from a class that itself inherits from another class. 
 	 The chain: Base -> Intermediate -> Derived. Each derived class gets all 
@@ -225,5 +225,143 @@ int multilevelInheritance(){
 	grad.displayFullProfile();	// Combines all levels
 
 	return 0;
+}
 
+
+
+// HIERARCHICAL INHERITANCE
+/*
+	Multiple classes inherit from the same base class. Each derived class gets all members of Base class
+	plus its own specific members.
+*/
+namespace hierarchical{
+
+	// Base class Animal
+	class Animal{
+	protected:
+		std::string name{};
+		int age{};
+	public:
+		Animal(std::string n, int a) : name{n}, age{a}{
+			std::cout << "[Hierarchical::Animal] created: " << name << ", " << age << " years old" << std::endl;
+		}
+		void eat() const{
+			std::cout << name << " is eating" << std::endl;
+		}
+		void sleep() const{
+			std::cout << name << " is sleeping" << std::endl;
+		}
+		void displayInfo() const{
+			std::cout << "Name is: " << name << ", Age: " << age << std::endl;
+		}
+	};
+	// Derived class 1
+	class Dog : public Animal{
+	private:
+		std::string breed{};
+		bool isTrained{};
+	public:
+		Dog(std::string n, int a, std::string b, bool trained) : Animal{n, a}, breed{b}, isTrained{trained}{
+			std::cout << "[Hierarchical::Dog Created: Breed = " 
+					  << breed<< ", Trained = " << (isTrained ? "Yes" : "No") << std::endl;
+		}
+		void bark() const{
+			std::cout << name << " says: Woof! Woof!" << std::endl;
+		}
+		void fetch() const{
+			std::cout << name << " is fetching the stick." << std::endl;
+		}
+		void displayDogInfo() const{
+			displayInfo();
+			std::cout << ", Breed: " << breed << ", Trained: " 
+					  << (isTrained ? "Yes" : "No") << std::endl;
+		}
+	};
+	// Derived class 2
+	class Cat : public Animal{
+	private:
+		std::string furColor{};
+		bool isIndoor{};
+	public:
+		Cat(std::string n, int a, std::string color, bool indoor) : Animal{n, a}, furColor{color}, isIndoor{indoor}{
+			std::cout << "[hierarchical::Cat] Created: Fur = " << furColor
+					  << ", Indoor = " << (isIndoor ? "Yes" : "No") << "\n";
+		}
+		void meow() const{
+			std::cout << name << " says: Meow! Meow!" << std::endl;
+		}
+		void scratch() const{
+			std::cout << name << " is scratching the furniture" << std::endl;
+		}
+		void displayCatInfo() const{
+			displayInfo();
+			std::cout << ", Fur Color: " << furColor << ", Indoor Cat: "
+					  << (isIndoor ? "Yes" : "No") << std::endl;
+		}
+	};
+	// Derived class 3
+	class Bird : public Animal{
+	private:
+		std::string species{};
+		double wingspan{};
+	public:
+		Bird(std::string n, int a, std::string sp, double ws) : Animal{n, a}, species{sp}, wingspan{ws}{
+			std::cout << "[hierarchical::Bird] Created: Species = " << species
+					  << ", Wingspan = " << wingspan << " cm\n";
+		}
+		void chirp() const{
+			std::cout << name << " chirps: Tweet! Tweet!" << std::endl;
+		}
+		void fly() const{
+			std::cout << name << " is flying with a wingspan of " << wingspan << std::endl;
+		}
+		void displayBirdInfo() const{
+			displayInfo();
+			std::cout << ", Species: " << species << ", Wingspan: " << wingspan << std::endl;
+		}
+	};
+}
+int hierarchicalInheritance(){
+	std::cout << "=== Hierarchical Inheritance (using hierarchical:: prefix) ===\n\n";
+
+	// Create objects using explicit namespace qualification
+	std::cout << "--- Creating a Dog ---\n";
+	hierarchical::Dog myDog{"Buddy", 3, "Golden Retriever", true};
+
+	std::cout << "\n--- Creating a Cat ---\n";
+	hierarchical::Cat myCat{"Whiskers", 2, "Orange Tabby", true};
+
+	std::cout << "\n--- Creating a Bird ---\n";
+	hierarchical::Bird myBird{"Tweety", 1, "Canary", 20.5};
+
+	std::cout << "\n========== DOG ACTIONS ==========\n";
+	myDog.eat();
+	myDog.sleep();
+	myDog.bark();
+	myDog.fetch();
+	myDog.displayDogInfo();
+
+	std::cout << "\n========== CAT ACTIONS ==========\n";
+	myCat.eat();
+	myCat.sleep();
+	myCat.meow();
+	myCat.scratch();
+	myCat.displayCatInfo();
+
+	std::cout << "\n========== BIRD ACTIONS ==========\n";
+	myBird.eat();
+	myBird.sleep();
+	myBird.chirp();
+	myBird.fly();
+	myBird.displayBirdInfo();
+
+	std::cout << "\n--- Common base class interface (works for all) ---\n";
+	myDog.displayInfo();
+	std::cout << "\n";
+	myCat.displayInfo();
+	std::cout << "\n";
+	myBird.displayInfo();
+	std::cout << "\n";
+
+	return 0;
 }

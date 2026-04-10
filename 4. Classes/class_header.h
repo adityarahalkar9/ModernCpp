@@ -15,3 +15,4 @@ int basicInheritance();
 int singleInheritance();
 int multipleInheritance();
 int multilevelInheritance();
+int hierarchicalInheritance();
