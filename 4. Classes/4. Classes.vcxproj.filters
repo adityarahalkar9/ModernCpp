@@ -27,6 +27,9 @@
     <ClCompile Include="03.destructors.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="04.inheritance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="class_header.h">

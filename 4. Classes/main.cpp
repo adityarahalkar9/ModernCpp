@@ -2,5 +2,5 @@ import <iostream>;
 #include "class_header.h"
 
 int main(){
-	explicitDestructor();
+	multipleInheritance();
 }
