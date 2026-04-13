@@ -16,3 +16,4 @@ int singleInheritance();
 int multipleInheritance();
 int multilevelInheritance();
 int hierarchicalInheritance();
+int hybridInheritance();
