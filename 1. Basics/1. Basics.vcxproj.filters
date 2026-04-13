@@ -33,22 +33,22 @@
     <ClCompile Include="04.functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="05.Conditions.cpp">
+    <ClCompile Include="06.Conditions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="06.loops_&amp;_control_flow.cpp">
+    <ClCompile Include="07.loops_&amp;_control_flow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="07.size_t_sizeof.cpp">
+    <ClCompile Include="08.size_t_sizeof.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="08.arrays.cpp">
+    <ClCompile Include="09.arrays.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="09.stl_arrays.cpp">
+    <ClCompile Include="10.stl_arrays.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="10.practice.cpp">
+    <ClCompile Include="05.operators.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
