@@ -30,3 +30,5 @@ int threeDimensionalArray();
 int stlArray();
 
 void arrayPractice();
+
+int operators();

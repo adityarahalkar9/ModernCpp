@@ -2,6 +2,6 @@ import <iostream>;
 #include "basic_header.h"
 
 int main() {
-    arrayPractice();
+    operators();
     return 0;
 }
