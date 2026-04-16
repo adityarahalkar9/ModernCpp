@@ -1,6 +1,7 @@
 import <iostream>;
 import <iomanip>;	// for std::boolalpha
-import <cmath>;;	// for std::pow
+import <cmath>;		// for std::pow
+import <bitset>;	// for std::bitset
 #include "basic_header.h"
 
 /*
@@ -178,6 +179,53 @@ int equalityOperators(){
 int logicalOperator(){
 	bool a{true}, b{false};
 	std::cout << std::boolalpha;
+	std::cout << (a && b) << std::endl;		// false
+	std::cout << (a || b) << std::endl;		// true
+	std::cout << (!a) << std::endl;			// false
+
+	// Short-circuit demonstration
+	int x = 0;
+	if(x != 0 && (10 / x) > 2) {  // Division by zero never occurs because first condition is false
+		std::cout << "This won't print.\n";
+	}
+
+	return 0;
+}
+
+
+
+// Bitwise Operators (&, |, ^, ~, <<, >>)
+// Operate on the binary representation of integers.
+int bitwiseOperator(){
+	unsigned char a{0b0011};	// 3
+	unsigned char b{0b0101};	// 5
+
+	std::cout << "a & b = " << std::bitset<4>(a & b) << " (1)" << std::endl;	 // 0001
+	std::cout << "a | b = " << std::bitset<4>(a | b) << " (7)" << std::endl;     // 0111
+	std::cout << "a ^ b = " << std::bitset<4>(a ^ b) << " (6)" << std::endl;     // 0110
+	std::cout << "~a    = " << std::bitset<4>(~a) << " (promoted to int)" << std::endl;
+
+	unsigned char c = 0b0001;  // 1
+	std::cout << "c << 1 = " << std::bitset<4>(c << 1) << " (2)" << std::endl;    // 0010
+	std::cout << "c >> 1 = " << std::bitset<4>(c >> 1) << " (0)" << std::endl;    // 0000
+
+	return 0;
+}
+
+
+
+// Ternary Conditional Operator(?:)
+// A compact alternative to simple if-else statements.
+int ternaryControlOperator(){
+	int score{85};
+	std::string grade = (score >= 60) ? std::string("p") : std::string("f");
+	std::cout << "Grade: " << grade << std::endl;
+	
+	int x{10}, y{20};
+	int max = (x > y) ? x : y;
+	std::cout << "Max: " << max << std::endl;
+
+	return 0;
 }
 
 
@@ -190,6 +238,9 @@ int operators(){
 	// assignmentOperators();
 	// incrementDecrementOperator();
 	// equalityOperators();
+	// logicalOperator();
+	// bitwiseOperator();
+	// ternaryControlOperator();
 
 	return 0;
 }
