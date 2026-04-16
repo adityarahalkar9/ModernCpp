@@ -229,6 +229,26 @@ int ternaryControlOperator(){
 }
 
 
+
+// Comma Operator (,)
+/*
+	Evaluates each expression from left to right and returns the value of the rightmost 
+	expression. Rarely used outside for loops.
+*/
+int commaOperator(){
+	int a{}, b{};
+	a = (b = 3, b + 2);    // b = 3, then a = 5
+	std::cout << a << ' ' << b << std::endl;    // 5 3
+
+	// Typical usage in for loops
+	for(int i = 0, j = 10; i < j; ++i, --j){
+		std::cout << i << ' ' << j << std::endl;
+	}
+
+	return 0;
+}
+
+
 int operators(){
 	// basicInfo();
 	// precedenceOfMultiplicationOverAddition();
@@ -241,6 +261,7 @@ int operators(){
 	// logicalOperator();
 	// bitwiseOperator();
 	// ternaryControlOperator();
+	commaOperator();
 
 	return 0;
 }
