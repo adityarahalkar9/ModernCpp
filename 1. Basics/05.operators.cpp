@@ -333,6 +333,14 @@ int solutionOrder(){
 
 
 
+/*
+	Conclusion
+	-> Precedence and associativity dictate how expressions are parsed.
+	-> Use the reference table to resolve complex expressions.
+	-> Parentheses are your friend for readability and safety.
+	-> Order of evaluation of operands is often unspecified; avoid side effects in compound expressions.
+*/
+
 int operators(){
 	// basicInfo();
 	// precedenceOfMultiplicationOverAddition();
