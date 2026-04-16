@@ -249,6 +249,90 @@ int commaOperator(){
 }
 
 
+
+// sizeof Operator
+// Returns the size in bytes of a type or expression.
+int sizeofOperator(){
+	std::cout << "Size of int: " << sizeof(int) << " bytes" << std::endl;
+	std::cout << "Size of double: " << sizeof(double) << " bytes" << std::endl;
+
+	int arr[10]{};
+	std::cout << "Size of array of 10 ints: " << sizeof(arr) << " bytes" << std::endl;
+	return 0;
+}
+
+
+
+// Member Access Operators (. and ->)
+// Used to access members of structures/classes.
+struct Person{
+	std::string name{};
+	int age{};
+};
+int memberAccessOperator(){
+	Person alice{"Alice", 30};
+	Person* ptr = &alice;
+
+	std::cout << alice.name << " is " << alice.age << std::endl;    // dot operator
+	std::cout << ptr->name << " is " << ptr->age << std::endl;    // arrow operator
+
+	return 0;
+}
+
+
+
+// Best Practices: Use Parentheses for Clarity
+/*
+	Rule of thumb: Parenthesize everything except addition, subtraction, multiplication, 
+	division, and simple assignment.
+*/
+int bestPractices(){
+	int a{1}, b{2}, c{3}, w{10}, y{5}, z{6};
+
+	// Without parentheses, meaning may be unclear
+	bool unclearResult = a && b || c;    // Actually(a && b) || c
+
+	// Clear intent
+	bool clearResult = (a && b) || c;
+
+	// Exception: simple arithmetic
+	int x = y + z * w;   // acceptable
+
+	// Exception: right-hand side of a single assignment
+	int result = a + b + c;   // parentheses not needed
+
+	return 0;
+}
+
+
+
+// Order of Evaluation – A Critical Distinction
+/*
+	Precedence and associativity determine grouping and the order of value computation. They do 
+	not specify the order in which operands are evaluated.
+*/
+int getValue(){
+	static int count = 0;
+	return ++count;
+}
+int orderOfEvaluation(){
+	// Ambiguous: the calls to getValue() can be evaluated in any order.
+	std::cout << getValue() + getValue() * getValue() << '\n';
+
+	return 0;
+}
+// Solution: Force a specific evaluation order by using separate statements.
+int solutionOrder(){
+	int a = getValue();  // first
+	int b = getValue();  // second
+	int c = getValue();  // third
+	std::cout << a + b * c << '\n';  // unambiguous
+	return 0;
+}
+
+
+
+
 int operators(){
 	// basicInfo();
 	// precedenceOfMultiplicationOverAddition();
@@ -261,7 +345,12 @@ int operators(){
 	// logicalOperator();
 	// bitwiseOperator();
 	// ternaryControlOperator();
-	commaOperator();
+	// commaOperator();
+	// sizeofOperator();
+	// memberAccessOperator();
+	// bestPractices();
+	// orderOfEvaluation();
+	// solutionOrder();
 
 	return 0;
 }
