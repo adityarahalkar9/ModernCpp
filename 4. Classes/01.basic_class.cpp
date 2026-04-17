@@ -1,5 +1,4 @@
-import <iostream>;
-import <string>;
+import std;
 #include "class_header.h"
 
 /*

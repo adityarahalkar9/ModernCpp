@@ -1,6 +1,6 @@
-import <iostream>;
+import std;
 #include "class_header.h"
 
 int main(){
-	hybridInheritance();
+	accessModifiers();
 }
