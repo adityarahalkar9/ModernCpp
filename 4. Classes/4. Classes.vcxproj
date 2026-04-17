@@ -134,6 +134,7 @@
     <ClCompile Include="02.constructors.cpp" />
     <ClCompile Include="03.destructors.cpp" />
     <ClCompile Include="04.inheritance.cpp" />
+    <ClCompile Include="05.operator_overloading.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

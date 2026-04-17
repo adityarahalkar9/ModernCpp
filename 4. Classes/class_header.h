@@ -17,3 +17,5 @@ int multipleInheritance();
 int multilevelInheritance();
 int hierarchicalInheritance();
 int hybridInheritance();
+
+int complexOverload();
