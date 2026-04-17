@@ -19,3 +19,4 @@ int hierarchicalInheritance();
 int hybridInheritance();
 
 int complexOverload();
+int smartPointerOverloads();

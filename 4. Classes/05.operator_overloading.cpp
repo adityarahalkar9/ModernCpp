@@ -292,3 +292,93 @@ int complexOverload(){
 
 
 // Smart Pointer – Overloading *, ->, and bool
+// A minimal smart pointer that owns a dynamically allocated object.
+template <typename T>
+class SmartPtr{
+private:
+	T* m_ptr{nullptr};	// raw pointer to the managed object
+public:
+	// Constructor: takes ownership of a raw pointer
+	explicit SmartPtr(T* ptr = nullptr) : m_ptr{ptr}{}
+
+	// Destructor: deletes the managed object
+	~SmartPtr(){
+		delete m_ptr;
+	}
+	// Disable copy semantics (unique ownership).
+	SmartPtr(const SmartPtr&) = delete;
+	SmartPtr& operator=(const SmartPtr&) = delete;
+
+	// Enable move semantics.
+	SmartPtr(SmartPtr&& other) noexcept : m_ptr{other.m_ptr} {
+		other.m_ptr = nullptr;   // source pointer no longer owns the object
+	}
+
+	SmartPtr& operator=(SmartPtr&& other) noexcept {
+		if(this != &other) {
+			delete m_ptr;            // free existing resource
+			m_ptr = other.m_ptr;     // transfer ownership
+			other.m_ptr = nullptr;   // leave source in a valid state
+		}
+		return *this;
+	}
+
+	// OPERATOR OVERLOADS
+
+	// Dereference operator (*)
+	// Returns a reference to the managed object.
+	T& operator*() const {
+		return *m_ptr;   // dereference the raw pointer
+	}
+
+	// Arrow operator (->)
+	// Returns the raw pointer so that member access works.
+	T* operator->() const {
+		return m_ptr;
+	}
+
+	// Conversion to bool
+	// Allows the smart pointer to be used in conditions like if (sp) ...
+	// The 'explicit' keyword prevents implicit conversions to bool in arithmetic.
+	explicit operator bool() const {
+		return m_ptr != nullptr;
+	}
+
+	// Utility to get the raw pointer (useful for interoperability).
+	T* get() const {
+		return m_ptr;
+	}
+};
+// A simple test class to demonstrate -> and *
+struct Test{
+	int value{0};
+	Test(int v) : value{v}{}
+		void show() const{
+			std::cout << "Test value = " << value << std::endl;
+		}
+};
+int smartPointerOverloads(){
+	// Create a smart pointer that owns a new Test object.
+	SmartPtr<Test> sp{new Test{42}};
+
+	// Use overloaded * and -> to access members.
+	(*sp).show();   // explicit dereference
+	sp->show();     // arrow operator (more natural)
+
+	// Boolean conversion
+	if(sp) {
+		std::cout << "sp is not null" << std::endl;
+	}
+
+	SmartPtr<Test> sp2;   // default‑constructed, holds nullptr
+	if(!sp2) {
+		std::cout << "sp2 is null" << std::endl;
+	}
+
+	// Move ownership
+	SmartPtr<Test> sp3 = std::move(sp);
+	std::cout << "After move, sp is " << (sp ? "not null" : "null") << std::endl;
+	std::cout << "sp3 is " << (sp3 ? "not null" : "null") << std::endl;
+
+	return 0;
+}
