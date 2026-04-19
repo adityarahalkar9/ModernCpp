@@ -24,3 +24,5 @@ int functionOverloading();
 int stringOverload();
 int vectorOverload();
 int matrixOverload();
+int overloadingNewDelete();
+int overloadingTypeConversionOperators();

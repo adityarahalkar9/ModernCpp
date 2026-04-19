@@ -23,6 +23,7 @@ import std;
 
 
 
+// ======================>>
 /*
 	This class demonstrates arithmetic, compound assignment, unary, increment/decrement, 
 	subscript, function call, comparison, and stream operators
@@ -291,6 +292,7 @@ int complexOverload(){
 
 
 
+// ======================>>
 // Smart Pointer – Overloading *, ->, and bool
 // A minimal smart pointer that owns a dynamically allocated object.
 template <typename T>
@@ -385,6 +387,7 @@ int smartPointerOverloads(){
 
 
 
+// ======================>>
 // Functor – Overloading ()
 /*
 	Function objects (functors) are classes that overload operator(). They can 
@@ -454,6 +457,7 @@ int functionOverloading(){
 
 
 
+// ======================>>
 // Custom String – Overloading +, +=, ==, <, [], <<, >>
 /*
 	This is a minimal string class that demonstrates many common operator 
@@ -592,6 +596,7 @@ int stringOverload(){
 
 
 
+// ======================>>
 // Vector3D – Overloading Arithmetic and Cross Product
 /*
 	Demonstrates overloading binary operators, compound assignment, subscript, function 
@@ -720,6 +725,7 @@ int vectorOverload(){
 
 
 
+// ======================>>
 // Matrix – Overloading (), +, *, and <<
 /*
 	This class shows how to overload operator() for element access, arithmetic operators 
@@ -833,6 +839,104 @@ int matrixOverload(){
 
 	Matrix E = 0.5 * B;
 	std::cout << "0.5 * B:" << std::endl << E;
+
+	return 0;
+}
+
+
+
+// ======================>>
+// Overloading new and delete (Class‑Specific)
+// You can customize memory allocation for a specific class.
+class Traced{
+private:
+	int m_id{0};
+	static inline int s_counter{0};
+public:
+	Traced() : m_id{++s_counter}{
+		std::cout << "Traced #" << m_id << " constructed" << std::endl;
+	}
+	~Traced(){
+		std::cout << "Traced #" << m_id << " destroyed" << std::endl;
+	}
+	// Class-specific operator new (single object)
+	static void* operator new(size_t size){
+		std::cout << "Custom new: allocating " << size << " bytes" << std::endl;
+		return std::malloc(size);
+	}
+	// Class-specific operator delete (single object)
+	static void operator delete(void* ptr){
+		std::cout << "Custom delete: freeing memory" << std::endl;
+		std::free(ptr);
+	}
+	// Class‑specific operator new[] (array)
+	static void* operator new[](size_t size){
+		std::cout << "Custom new[]: allocating " << size << " bytes" << std::endl;
+		return std::malloc(size);
+	}
+	// Class‑specific operator delete[] (array)
+	static void operator delete[](void* ptr){
+		std::cout << "Custom delete[]: freeing memory" << std::endl;
+		std::free(ptr);
+	}
+};
+int overloadingNewDelete(){
+	std::cout << "--- Single object ---" << std::endl;
+	Traced* p = new Traced;
+	delete p;
+	std::cout << std::endl << "--- Array of objects ---" << std::endl;
+	Traced* arr = new Traced[3];
+	delete[] arr;
+
+	return 0;
+}
+
+
+
+// ======================>>
+// Type Conversion Operators
+// Allows implicit or explicit conversion of your class to another type.
+class Fraction{
+private:
+	int m_num{0};
+	int m_den{1};
+public:
+	Fraction(int num = 0, int den = 1) : m_num{num}, m_den{den}{
+		if(m_den == 0){
+			throw std::invalid_argument{"Denominator cannot be zero"};
+		}
+	}
+
+	// TYPE CONVERSION OPERATORS
+
+	// Implicit conversion to double
+	operator double() const{
+		return static_cast<double>(m_num) / m_den;
+	}
+	// Implicit conversion to float
+	operator float() const{
+		return static_cast<float>(m_num) / m_den;
+	}
+	// Explicit conversion to int (truncates toward zero)
+	explicit operator int() const{
+		return m_num / m_den;
+	}
+	// Stream output for easy printing
+	friend std::ostream& operator<<(std::ostream& os, const Fraction& f){
+		return os << f.m_num << "/" << f.m_den;
+	}
+};
+int overloadingTypeConversionOperators(){
+	Fraction f{3, 4};
+	std::cout << "Fraction: " << f << std::endl;
+
+	double d = f;                 // implicit conversion to double
+	float fl = f;                 // implicit conversion to float
+	int i = static_cast<int>(f);  // explicit conversion required (cannot be implicit)
+
+	std::cout << "As double: " << d << std::endl;
+	std::cout << "As float:  " << fl << std::endl;
+	std::cout << "As int (truncated): " << i << std::endl;
 
 	return 0;
 }
