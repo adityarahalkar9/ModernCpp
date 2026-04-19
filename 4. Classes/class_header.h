@@ -27,3 +27,7 @@ int matrixOverload();
 int overloadingNewDelete();
 int overloadingTypeConversionOperators();
 int overloadingPointerToMember();
+
+int pFunctionOverloading();
+int operatorOverload();
+int templatePolymorphism();
