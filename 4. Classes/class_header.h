@@ -26,3 +26,4 @@ int vectorOverload();
 int matrixOverload();
 int overloadingNewDelete();
 int overloadingTypeConversionOperators();
+int overloadingPointerToMember();
