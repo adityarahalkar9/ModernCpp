@@ -20,3 +20,7 @@ int hybridInheritance();
 
 int complexOverload();
 int smartPointerOverloads();
+int functionOverloading();
+int stringOverload();
+int vectorOverload();
+int matrixOverload();

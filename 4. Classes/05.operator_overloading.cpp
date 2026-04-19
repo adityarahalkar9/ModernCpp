@@ -382,3 +382,457 @@ int smartPointerOverloads(){
 
 	return 0;
 }
+
+
+
+// Functor – Overloading ()
+/*
+	Function objects (functors) are classes that overload operator(). They can 
+	be called like functions and are widely used with STL algorithms.
+*/
+// A functor that multiplies a number by a fixed factor.
+class MultiplyBy {
+private:
+	int m_factor{1};
+
+public:
+	// Constructor using brace initialization.
+	explicit MultiplyBy(int factor) : m_factor{factor} {}
+
+	// Overloaded function call operator.
+	// Takes an integer and returns the product.
+	int operator()(int x) const {
+		return x * m_factor;
+	}
+};
+// A functor that accumulates a running sum.
+class Accumulator{
+private:
+	int m_sum{0};
+public:
+	// Overloaded () adds the argument to the sum and returns the new sum.
+	int operator()(int x){
+		m_sum += x;
+		return m_sum;
+	}
+
+	// Getter for the current sum.
+	int sum() const{ 
+		return m_sum; 
+	}
+
+	// Reset the accumulator.
+	void reset(){ 
+		m_sum = 0; 
+	}
+};
+int functionOverloading(){
+	// Create a functor that multiplies by 3.
+	MultiplyBy times3{3};
+	std::cout << "3 * 5 = " << times3(5) << std::endl;
+	std::cout << "3 * 10 = " << times3(10) << std::endl;
+
+	// Use functor with std::transform to double all elements.
+	std::vector<int> numbers{1, 2, 3, 4, 5};
+	std::transform(numbers.begin(), numbers.end(), numbers.begin(), MultiplyBy{2});
+
+	std::cout << "After MultiplyBy{2}: ";
+	for(int n : numbers) {
+		std::cout << n << " ";
+	}
+	std::cout << std::endl;
+
+	// Use Accumulator functor.
+	Accumulator acc;
+	for(int n : numbers) {
+		std::cout << "Adding " << n << ", running sum = " << acc(n) << std::endl;
+	}
+	std::cout << "Final sum = " << acc.sum() << std::endl;
+
+	return 0;
+}
+
+
+
+// Custom String – Overloading +, +=, ==, <, [], <<, >>
+/*
+	This is a minimal string class that demonstrates many common operator 
+	overloads.
+*/
+class MyString{
+private:
+	char* m_data{nullptr};
+	size_t m_length{0};
+public:
+	// Default constructor: empty string.
+	MyString() {
+		m_data = new char[1]{'\0'};
+		m_length = 0;
+	}
+	// Constructor from C‑style string.
+	MyString(const char* str) {
+		m_length = std::strlen(str);
+		m_data = new char[m_length + 1];
+		std::copy(str, str + m_length + 1, m_data);
+	}
+	// Copy constructor.
+	MyString(const MyString& other) {
+		m_length = other.m_length;
+		m_data = new char[m_length + 1];
+		std::copy(other.m_data, other.m_data + m_length + 1, m_data);
+	}
+	// Move constructor.
+	MyString(MyString&& other) noexcept
+		: m_data{other.m_data}, m_length{other.m_length} {
+		other.m_data = nullptr;
+		other.m_length = 0;
+	}
+	// Destructor.
+	~MyString() {
+		delete[] m_data;
+	}
+	// Copy assignment operator.
+	MyString& operator=(const MyString& other) {
+		if(this != &other) {
+			delete[] m_data;                       // free old memory
+			m_length = other.m_length;
+			m_data = new char[m_length + 1];
+			std::copy(other.m_data, other.m_data + m_length + 1, m_data);
+		}
+		return *this;
+	}
+	// Move assignment operator.
+	MyString& operator=(MyString&& other) noexcept {
+		if(this != &other) {
+			delete[] m_data;
+			m_data = other.m_data;
+			m_length = other.m_length;
+			other.m_data = nullptr;
+			other.m_length = 0;
+		}
+		return *this;
+	}
+
+	// OPERATOR OVERLOADS
+
+	// Concatenation (+)
+	MyString operator+(const MyString& rhs) const {
+		MyString result;
+		result.m_length = m_length + rhs.m_length;
+		result.m_data = new char[result.m_length + 1];
+		std::copy(m_data, m_data + m_length, result.m_data);
+		std::copy(rhs.m_data, rhs.m_data + rhs.m_length + 1, result.m_data + m_length);
+		return result;
+	}
+	// Compound concatenation (+=)
+	MyString& operator+=(const MyString& rhs) {
+		*this = *this + rhs;   // reuse +
+		return *this;
+	}
+	// Equality comparison (==)
+	bool operator==(const MyString& rhs) const {
+		return m_length == rhs.m_length && std::strcmp(m_data, rhs.m_data) == 0;
+	}
+	// Inequality comparison (!=)
+	bool operator!=(const MyString& rhs) const {
+		return !(*this == rhs);
+	}
+	// Less‑than comparison (<) – useful for ordering
+	bool operator<(const MyString& rhs) const {
+		return std::strcmp(m_data, rhs.m_data) < 0;
+	}
+	// Subscript operator [] (non‑const) – allows modification of characters.
+	char& operator[](size_t index) {
+		return m_data[index];
+	}
+	// Subscript operator [] (const) – read‑only access.
+	const char& operator[](size_t index) const {
+		return m_data[index];
+	}
+	// Get the length.
+	size_t length() const { return m_length; }
+	// Friend stream insertion (<<)
+	friend std::ostream& operator<<(std::ostream& os, const MyString& s) {
+		return os << s.m_data;
+	}
+
+	// Friend stream extraction (>>)
+	// Reads a word (whitespace‑delimited) into the string.
+	friend std::istream& operator>>(std::istream& is, MyString& s) {
+		char buffer[1024]{};
+		is >> buffer;
+		s = MyString{buffer};   // use constructor and move assignment
+		return is;
+	}
+};
+int stringOverload(){
+	MyString s1{"Hello"};
+	MyString s2{" World"};
+
+	MyString s3 = s1 + s2;
+	std::cout << "Concatenated: " << s3 << std::endl;
+
+	s1 += MyString{", C++"};
+	std::cout << "After += : " << s1 << std::endl;
+
+	s1[7] = 'c';   // modify character using non‑const []
+	std::cout << "After subscript assignment: " << s1 << std::endl;
+
+	std::cout << std::boolalpha;
+	std::cout << "s1 == s3? " << (s1 == s3) << std::endl;
+	std::cout << "s1 < s2? " << (s1 < s2) << std::endl;
+
+	MyString input;
+	std::cout << "Enter a word: ";
+	std::cin >> input;
+	std::cout << "You entered: " << input << std::endl;
+
+	return 0;
+}
+
+
+
+// Vector3D – Overloading Arithmetic and Cross Product
+/*
+	Demonstrates overloading binary operators, compound assignment, subscript, function 
+	call (norm), and using % for cross product.
+*/
+class Vector3D{
+private:
+	double m_x{0.0};
+	double m_y{0.0};
+	double m_z{0.0};
+public:
+	Vector3D(double x = 0.0, double y = 0.0, double z = 0.0) : m_x{x}, m_y{y}, m_z{z}{}
+
+	// MEMBER OPERATORS
+
+	// Binary addition
+	Vector3D operator+(const Vector3D& rhs) const{
+		return Vector3D(m_x + rhs.m_x, m_y + rhs.m_y, m_z + rhs.m_z);
+	}
+	// Binary subtraction
+	Vector3D operator-(const Vector3D& rhs) const{
+		return Vector3D{m_x - rhs.m_x, m_y - rhs.m_y, m_z - rhs.m_z};
+	}
+	// Scalar multiplication (vector * scalar)
+	Vector3D operator*(double scalar) const{
+		return Vector3D{m_x * scalar, m_y * scalar, m_z * scalar};
+	}
+	// Scalar division (vector / scalar)
+	Vector3D operator/(double scalar) const{
+		return Vector3D{m_x / scalar, m_y / scalar, m_z / scalar};
+	}
+	// Dot product – using * between two vectors.
+	double operator*(const Vector3D& rhs) const{
+		return m_x * rhs.m_x + m_y * rhs.m_y + m_z * rhs.m_z;
+	}
+	// Cross product – using % (a less common operator, but legal).
+	Vector3D operator%(const Vector3D& rhs) const{
+		return Vector3D{
+			m_y * rhs.m_z - m_z * rhs.m_y,
+			m_z * rhs.m_x - m_x * rhs.m_z,
+			m_x * rhs.m_y - m_y * rhs.m_x
+		};
+	}
+	// Compound addition (+=)
+	Vector3D& operator+=(const Vector3D& rhs){
+		m_x += rhs.m_x;
+		m_y += rhs.m_y;
+		m_z += rhs.m_z;
+		return *this;
+	}
+	// Compound subtraction (-=)
+	Vector3D& operator-=(const Vector3D& rhs){
+		m_x -= rhs.m_x;
+		m_y -= rhs.m_y;
+		m_z -= rhs.m_z;
+		return *this;
+	}
+	// Compound scalar multiplication (*=)
+	Vector3D& operator*=(double scalar){
+		m_x *= scalar;
+		m_y *= scalar;
+		m_z *= scalar;
+		return *this;
+	}
+	// Unary minus (negation)
+	Vector3D operator-() const{
+		return Vector3D{-m_x, -m_y, -m_z};
+	}
+	// Subscript operator (non‑const) – index 0,1,2 for x,y,z.
+	double& operator[](int index){
+		if(index == 0)      return m_x;
+		else if(index == 1) return m_y;
+		else                 return m_z;
+	}
+	const double& operator[](int index) const{
+		if(index == 0)      return m_x;
+		else if(index == 1) return m_y;
+		else                 return m_z;
+	}
+	// Function call operator – returns the magnitude (norm).
+	double operator()() const{
+		return std::sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
+	}
+	// Equality comparison
+	bool operator==(const Vector3D& rhs) const{
+		return m_x == rhs.m_x && m_y == rhs.m_y && m_z == rhs.m_z;
+	}
+	bool operator!=(const Vector3D& rhs) const{
+		return !(*this == rhs);
+	}
+
+	// Stream output
+	friend std::ostream& operator<<(std::ostream& os, const Vector3D& v){
+		os << "(" << v.m_x << ", " << v.m_y << ", " << v.m_z << ")";
+		return os;
+	}
+};
+// Non‑member scalar * vector (for expressions like 2.5 * v)
+Vector3D operator*(double scalar, const Vector3D& v) {
+	return v * scalar;   // reuse member operator*
+}
+int vectorOverload(){
+	Vector3D v1{1.0, 2.0, 3.0};
+	Vector3D v2{4.0, 5.0, 6.0};
+
+	std::cout << "v1 = " << v1 << std::endl;
+	std::cout << "v2 = " << v2 << std::endl;
+
+	std::cout << "v1 + v2 = " << v1 + v2 << std::endl;
+	std::cout << "v1 - v2 = " << v1 - v2 << std::endl;
+	std::cout << "v1 * 2.5 = " << v1 * 2.5 << std::endl;
+	std::cout << "3.0 * v2 = " << 3.0 * v2 << std::endl;
+	std::cout << "v1 · v2 (dot) = " << v1 * v2 << std::endl;
+	std::cout << "v1 × v2 (cross) = " << v1 % v2 << std::endl;
+
+	v1 += v2;
+	std::cout << "After v1 += v2: " << v1 << std::endl;
+
+	std::cout << "Norm of v1: " << v1() << std::endl;
+
+	v1[0] = 100.0;   // modify x component
+	std::cout << "After v1[0] = 100: " << v1 << std::endl;
+
+	return 0;
+}
+
+
+
+// Matrix – Overloading (), +, *, and <<
+/*
+	This class shows how to overload operator() for element access, arithmetic operators 
+	for matrix operations, and stream insertion.
+*/
+class Matrix{
+private:
+	std::vector<std::vector<double>> m_data{};
+	size_t m_rows{0};
+	size_t m_cols{0};
+public:
+	// Constructor: creates a rows × cols matrix, optionally initializing all elements.
+	Matrix(size_t rows, size_t cols, double init = 0.0) : m_data(rows, std::vector<double>(cols, init)), m_rows{rows}, m_cols{cols}{}
+
+	// OPERATOR OVERLOADS
+
+	// Access element at (row, col) – non‑const version (allows modification).
+	double& operator()(size_t row, size_t col){
+		return m_data.at(row).at(col);	// at() performs bounds checking
+	}
+	// Const version for read‑only access.
+	const double& operator()(size_t row, size_t col) const{
+		return m_data.at(row).at(col);
+	}
+
+	// Matrix addition
+	Matrix operator+(const Matrix& rhs) const{
+		if(m_rows != rhs.m_rows || m_cols != rhs.m_cols){
+			throw std::invalid_argument{"Matrix dimensions must match for addition"};
+		}
+		Matrix result{m_rows, m_cols};
+		for(size_t i = 0; i < m_rows; ++i){
+			for(size_t j = 0; j < m_cols; ++j){
+				result(i, j) = (*this)(i, j) + rhs(i, j);
+			}
+		}
+		return result;
+	}
+	// Matrix multiplication (this * rhs)
+	Matrix operator*(const Matrix& rhs) const{
+		if(m_cols != rhs.m_rows){
+			throw std::invalid_argument{"Incompatible dimensions for multiplication"};
+		}
+		Matrix result{m_rows, rhs.m_cols};
+		for(size_t i = 0; i < m_rows; ++i){
+			for(size_t j = 0; j < rhs.m_cols; ++j){
+				double sum = 0.0;
+				for(size_t k = 0; k < m_cols; ++k){
+					sum += (*this)(i, k) * rhs(k, j);
+				}
+				result(i, j) = sum;
+			}
+		}
+		return result;
+	}
+	// Scalar multiplication (matrix * scalar)
+	Matrix operator*(double scalar) const{
+		Matrix result{m_rows, m_cols};
+		for(size_t i = 0; i < m_rows; ++i){
+			for(size_t j = 0; j < m_cols; ++j){
+				result(i, j) = (*this)(i, j) * scalar;
+			}
+		}
+		return result;
+	}
+
+	// Equality comparison
+	bool operator==(const Matrix& rhs) const{
+		return m_rows == rhs.m_rows && m_cols == rhs.m_cols && m_data == rhs.m_data;
+	}
+	// Stream output – prints the matrix row by row.
+	friend std::ostream& operator<<(std::ostream& os, const Matrix& m){
+		for(size_t i = 0; i < m.m_rows; ++i){
+			os << "[ ";
+			for(size_t j = 0; j < m.m_cols; ++j) {
+				os << m(i, j) << " ";
+			}
+			os << "]" << std::endl;
+		}
+		return os;
+	}
+	// Getters for dimensions.
+	size_t rows() const{ 
+		return m_rows; 
+	}
+	size_t cols() const{ 
+		return m_cols; 
+	}
+};
+// Non‑member scalar * matrix (for expressions like 2.0 * mat)
+Matrix operator*(double scalar, const Matrix& m) {
+	return m * scalar;   // reuse member operator*
+}
+int matrixOverload(){
+	// Create a 2x3 matrix initialized to 1.0, then modify some elements.
+	Matrix A{2, 3, 1.0};
+	A(0, 1) = 2.0;
+	A(1, 2) = 3.0;
+	std::cout << "Matrix A:" << std::endl << A;
+
+	// Create a 3x2 matrix initialized to 2.0, then modify.
+	Matrix B{3, 2, 2.0};
+	B(1, 0) = 0.0;
+	std::cout << "Matrix B:" << std::endl << B;
+
+	Matrix C = A * B;
+	std::cout << "A * B:" << std::endl << C;
+
+	Matrix D = A * 2.5;
+	std::cout << "A * 2.5:" << std::endl << D;
+
+	Matrix E = 0.5 * B;
+	std::cout << "0.5 * B:" << std::endl << E;
+
+	return 0;
+}
