@@ -32,6 +32,24 @@ import <array>;
 	  nullptr and assign nullptr again after dealloacted
 */
 
+void basicDynamicAllocation(){
+	int* p_num = new int;
+	*p_num = 34;
+	std::cout << "*p_num is: " << *p_num << "\n";
+
+	delete p_num;	  // Delete after use
+	p_num = nullptr;  // Set it to null for safety
+
+	// Can reuse pointer. (Valid code)
+	int num{89};
+	int* p_num = new int(num);
+
+	// Delete after use
+	delete p_num;	  
+	p_num = nullptr;
+
+}
+
 void singleVariableExampleOne(){
 	int* p{};		// Pointer initialisation to null
 	p = new int;    // Requesting memory for variable using new keyword
@@ -128,6 +146,7 @@ int dynamic(){
 	// arrayDynamicMemory();
 	// singleObject();
 	// danglingPointer();
+	basicDynamicAllocation();
 
 	return 0;
 }

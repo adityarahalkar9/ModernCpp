@@ -23,6 +23,18 @@ int pointer(){
 
 
 
+void pointerToChar(){
+	const char* message{"Hello world"};    // Using const is necessary
+	std::cout << message << "\n";
+
+	// If modification is required then
+	char message1[]{"Hii"};
+	message1[0] = 'B';
+	std::cout << message1 << "\n";
+}
+
+
+
 int pointerManipulation(){
 	int a{90};
 	int* a_ptr = &a;
@@ -497,6 +509,7 @@ int weakPtr(){
 
 int pointers(){
 	// pointer();
+	// pointerToChar();
 	// pointerManipulation();
 	// nullPointer();
 	// constPointer();
