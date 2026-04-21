@@ -31,3 +31,8 @@ int overloadingPointerToMember();
 int pFunctionOverloading();
 int operatorOverload();
 int templatePolymorphism();
+int staticDispatch();
+int dynamicDispatch();
+int vTable();
+int overrideKeyword();
+int finalKeywordDemo();
