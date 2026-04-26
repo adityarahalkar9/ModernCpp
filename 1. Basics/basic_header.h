@@ -10,6 +10,7 @@ int function();
 void mAndP();
 int printV();
 void defaultArguments();
+void lambdaFunctions();
 
 void ifElse();
 void switchStatement();

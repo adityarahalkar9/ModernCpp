@@ -45,7 +45,8 @@ void basicDynamicAllocation(){
 	int* p_num = new int(num);
 
 	// Delete after use
-	delete p_num;	  
+	delete p_num;
+	// delete p_num  {Don't delete memory twice}
 	p_num = nullptr;
 
 }
@@ -81,6 +82,35 @@ void singleVariableExampleThree(){
 	std::cout << "Value of ptr is: " << *ptr << std::endl;
 	delete ptr;		// Freeing allocated memory
 	ptr = nullptr;	// Avoid dangling pointer
+}
+
+
+// Memory Leak: When we lose access to memory that is dynamically allocated
+void memoryLeak(){
+	/*	
+		====> 1st scenario
+		int* p_number{new int{67}};    // Pointes to some address, lets call it address1
+		
+		//Should delete and reset here
+		delete p_number;
+		p_number = nullptr;
+
+		int number{55};     // Lives at address2
+		p_number = &number;	// Now p_number points to address 2, but address1 is still in use by
+							   our program. But our program has lost access to that memory location
+							   Memory has been leaked
+
+		====> 2nd scenario
+		int function(){
+			{
+				int* p_number2{new int{57}};
+			}
+			// p_number2 itself is a pointer nested in a scope	When the scope ends, p_number2 
+			   will die but the new int dynamic memory is lost forever. Memory leak has now happened.
+
+			return 0;
+		}
+	*/
 }
 
 
@@ -146,7 +176,7 @@ int dynamic(){
 	// arrayDynamicMemory();
 	// singleObject();
 	// danglingPointer();
-	basicDynamicAllocation();
+	// basicDynamicAllocation();
 
 	return 0;
 }

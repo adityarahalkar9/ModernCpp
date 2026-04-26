@@ -69,3 +69,43 @@ void defaultArguments(){
 	displayItemCount("Chocolate", 23);   // Overrides default argument count
 }
 
+// Lambda function Syntax
+/*
+	[capture list](parameters) -> return type{
+		std::cout << std::endl;
+		}
+*/
+
+void lambdaFunctions(){
+	// Calling lambda function #2
+	auto func = [](){
+		std::cout << "World" << std::endl;
+		};
+	func();
+
+	// Calling lambda function directly after definition
+	[](){
+		std::cout << "Hello" << std::endl;
+		}();
+
+	// Lambda functions that take parameters
+	[](double a, double b){
+		std::cout << "a + b : " << (a + b) << std::endl;
+		}(12.34, 56.78);
+
+	// Lambda function that returns something
+	auto result1 = [](double a, double b){
+		return (a + b);
+		};
+
+	// Printing result directly
+	std::cout << "Result_2: " << [](double a, double b){
+		return (a + b);
+		}(12.13, 5.78) << std::endl;
+
+	// Specify return type explicitly
+	auto result3 = [](double a, double b) -> double{
+		return (a + b);
+		}(15.54, 14.47);
+	std::cout << "Result_3: " << result3 << std::endl;
+}

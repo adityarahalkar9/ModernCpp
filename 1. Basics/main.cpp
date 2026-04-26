@@ -2,6 +2,6 @@ import <iostream>;
 #include "basic_header.h"
 
 int main() {
-    operators();
+    lambdaFunctions();
     return 0;
 }
