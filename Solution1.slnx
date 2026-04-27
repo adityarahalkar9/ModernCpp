@@ -7,4 +7,5 @@
   <Project Path="2. Memory/2. Memory.vcxproj" Id="b13e9fd7-208d-480f-9d10-5a0312dbdb98" />
   <Project Path="3. Structs/3. Structs.vcxproj" Id="28ee6d09-c521-4ff2-a773-248c306183f9" />
   <Project Path="4. Classes/4. Classes.vcxproj" Id="7c990cae-373d-49ce-8cb1-bc1fa568de4b" />
+  <Project Path="4. RAII &amp; Smart pointers/4. RAII &amp; Smart pointers.vcxproj" Id="0fd9ead5-5b4d-423f-b536-b929feba993f" />
 </Solution>
