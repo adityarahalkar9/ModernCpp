@@ -7,3 +7,6 @@ void defaultConstructor();
 void parameterisedConstructor();
 void copyConstructor();
 int moveConstructor();
+
+int basicDestructor();
+int explicitDestructor();
