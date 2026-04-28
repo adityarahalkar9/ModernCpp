@@ -176,7 +176,7 @@ int dynamic(){
 	// arrayDynamicMemory();
 	// singleObject();
 	// danglingPointer();
-	// basicDynamicAllocation();
+	basicDynamicAllocation();
 
 	return 0;
 }
