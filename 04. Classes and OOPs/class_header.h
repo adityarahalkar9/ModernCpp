@@ -17,3 +17,13 @@ int multipleInheritance();
 int multilevelInheritance();
 int hierarchicalInheritance();
 int hybridInheritance();
+
+int complexOverload();
+int smartPointerOverloads();
+int functionOverloading();
+int stringOverload();
+int vectorOverload();
+int matrixOverload();
+int overloadingNewDelete();
+int overloadingTypeConversionOperators();
+int overloadingPointerToMember();
