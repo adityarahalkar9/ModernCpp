@@ -3,6 +3,7 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Project Path="01. Basics/01. Basics.vcxproj" />
   <Project Path="1. Basics/1. Basics.vcxproj" Id="508bd4b6-88c6-4fff-a4e1-0d2bd80de746" />
   <Project Path="10. Concurrency and Parallelism/10. Concurrency and Parallelism.vcxproj" Id="edc8bab2-51c5-4338-a17b-0c31bf0919ad" />
   <Project Path="11. Coroutines and Asynchronous Programming/11. Coroutines and Asynchronous Programming.vcxproj" Id="d63f68fc-2f50-47d0-905a-c45a48f928ba" />
