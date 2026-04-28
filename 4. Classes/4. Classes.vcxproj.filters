@@ -33,7 +33,16 @@
     <ClCompile Include="05.operator_overloading.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="06.polymorphism.cpp">
+    <ClCompile Include="08.polymorphism.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="06.virtual_functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="07.interfaces.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RTTI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

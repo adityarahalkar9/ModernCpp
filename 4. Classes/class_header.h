@@ -28,6 +28,10 @@ int overloadingNewDelete();
 int overloadingTypeConversionOperators();
 int overloadingPointerToMember();
 
+int virtualFuction();
+
+int interfaces();
+
 int pFunctionOverloading();
 int operatorOverload();
 int templatePolymorphism();
