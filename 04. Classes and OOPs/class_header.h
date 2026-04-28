@@ -27,3 +27,5 @@ int matrixOverload();
 int overloadingNewDelete();
 int overloadingTypeConversionOperators();
 int overloadingPointerToMember();
+
+int virtualFuction();
