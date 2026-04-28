@@ -6,8 +6,6 @@
   <Project Path="01. Basics/01. Basics.vcxproj" Id="cd76493e-af69-40de-91ac-d90bb6d3031a" />
   <Project Path="02. Memory/02. Memory.vcxproj" Id="586574f8-9c89-4b4d-9ed2-0c1877a4b9fc" />
   <Project Path="03. Structs/03. Structs.vcxproj" Id="28ee6d09-c521-4ff2-a773-248c306183f9" />
-  <Project Path="04. Classes and OOPs/04. Classes and OOPs.vcxproj" Id="c00554aa-4aa4-4707-80f0-e4588deed396" />
-  <Project Path="05. RAII and Smart Pointers/05. RAII and Smart Pointers.vcxproj" Id="23e27ea5-696f-4ff8-bdc0-4e47a7181fa4" />
   <Project Path="06. Standard Library Essentials/06. Standard Library Essentials.vcxproj" Id="0ad2a955-ca17-4270-8d9f-8d3be0ee746d" />
   <Project Path="07. Templates and Generic Programming/07. Templates and Generic Programming.vcxproj" Id="f42d2a86-2bb0-46e5-a99a-e9a701e9fa58" />
   <Project Path="08. Exception Handling/08. Exception Handling.vcxproj" Id="ed29fc07-2306-4d04-b38e-ad3ff2718808" />
