@@ -29,3 +29,5 @@ int overloadingTypeConversionOperators();
 int overloadingPointerToMember();
 
 int virtualFuction();
+
+int interfaces();

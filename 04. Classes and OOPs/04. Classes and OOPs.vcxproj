@@ -134,6 +134,7 @@
     <ClCompile Include="04.inheritance.cpp" />
     <ClCompile Include="05.operator_overloading.cpp" />
     <ClCompile Include="06.virtual_functions.cpp" />
+    <ClCompile Include="07.interfaces.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
