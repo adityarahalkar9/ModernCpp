@@ -1,6 +1,6 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include "raii_header.h"
-#define _CRT_SECURE_NO_WARNINGS		// Disables MSVC's fopen warning
 
 /*
 	RAII is the foundational idiom of C++ resource management. The idea: bind the lifetime
