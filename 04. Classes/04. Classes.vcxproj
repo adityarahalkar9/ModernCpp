@@ -21,10 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b13e9fd7-208d-480f-9d10-5a0312dbdb98}</ProjectGuid>
-    <RootNamespace>My2Memory</RootNamespace>
+    <ProjectGuid>{7c990cae-373d-49ce-8cb1-bc1fa568de4b}</ProjectGuid>
+    <RootNamespace>My4Classes</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>02. Memory</ProjectName>
+    <ProjectName>04. Classes</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -105,9 +105,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+      <TranslateIncludes>false</TranslateIncludes>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,14 +131,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="01.pointers.cpp" />
-    <ClCompile Include="02.references.cpp" />
-    <ClCompile Include="03.dynamic_memory.cpp" />
-    <ClCompile Include="04.vectors.cpp" />
+    <ClCompile Include="01.basic_class.cpp" />
+    <ClCompile Include="02.constructors.cpp" />
+    <ClCompile Include="03.destructors.cpp" />
+    <ClCompile Include="04.inheritance.cpp" />
+    <ClCompile Include="05.operator_overloading.cpp" />
+    <ClCompile Include="06.virtual_functions.cpp" />
+    <ClCompile Include="08.polymorphism.cpp" />
+    <ClCompile Include="07.interfaces.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RTTI.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="memory_header.h" />
+    <ClInclude Include="class_header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

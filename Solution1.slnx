@@ -4,7 +4,14 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="01. Basics/01. Basics.vcxproj" />
-  <Project Path="1. Basics/1. Basics.vcxproj" Id="508bd4b6-88c6-4fff-a4e1-0d2bd80de746" />
+  <Project Path="02. Memory/02. Memory.vcxproj" />
+  <Project Path="03. Structs/03. Structs.vcxproj" Id="28ee6d09-c521-4ff2-a773-248c306183f9" />
+  <Project Path="04. Classes/04. Classes.vcxproj" Id="7c990cae-373d-49ce-8cb1-bc1fa568de4b" />
+  <Project Path="05. RAII &amp; Smart pointers/05. RAII &amp; Smart pointers.vcxproj" Id="0fd9ead5-5b4d-423f-b536-b929feba993f" />
+  <Project Path="06. Standard Library Essentials/06. Standard Library Essentials.vcxproj" Id="0ad2a955-ca17-4270-8d9f-8d3be0ee746d" />
+  <Project Path="07. Templates and Generic Programming/07. Templates and Generic Programming.vcxproj" Id="f42d2a86-2bb0-46e5-a99a-e9a701e9fa58" />
+  <Project Path="08. Exception Handling/08. Exception Handling.vcxproj" Id="ed29fc07-2306-4d04-b38e-ad3ff2718808" />
+  <Project Path="09. Advanced Modern C++/09. Advanced Modern C++.vcxproj" Id="648e9093-f153-4e4f-8cef-79b73af38d2c" />
   <Project Path="10. Concurrency and Parallelism/10. Concurrency and Parallelism.vcxproj" Id="edc8bab2-51c5-4338-a17b-0c31bf0919ad" />
   <Project Path="11. Coroutines and Asynchronous Programming/11. Coroutines and Asynchronous Programming.vcxproj" Id="d63f68fc-2f50-47d0-905a-c45a48f928ba" />
   <Project Path="12. Low-Level Memory, Object Model, and ABI/12. Low-Level Memory, Object Model, and ABI.vcxproj" Id="112cd230-0b82-48a9-a9a9-c54248b69e90" />
@@ -12,12 +19,4 @@
   <Project Path="14. Performance and Hardware-Aware Coding/14. Performance and Hardware-Aware Coding.vcxproj" Id="c6a0f77d-b0c3-4de3-a5ae-6d725f8ad4e8" />
   <Project Path="15. Interoperability with Other Languages &amp; Build Systems/15. Interoperability with Other Languages &amp; Build Systems.vcxproj" Id="cab1a381-5844-4f04-83f0-f9456e297a8b" />
   <Project Path="16. C++23 Additions and Future Trends/16. C++23 Additions and Future Trends.vcxproj" Id="90bcfd26-f17e-420f-8d54-2925a1e0194f" />
-  <Project Path="2. Memory/2. Memory.vcxproj" Id="b13e9fd7-208d-480f-9d10-5a0312dbdb98" />
-  <Project Path="3. Structs/3. Structs.vcxproj" Id="28ee6d09-c521-4ff2-a773-248c306183f9" />
-  <Project Path="4. Classes/4. Classes.vcxproj" Id="7c990cae-373d-49ce-8cb1-bc1fa568de4b" />
-  <Project Path="4. RAII &amp; Smart pointers/4. RAII &amp; Smart pointers.vcxproj" Id="0fd9ead5-5b4d-423f-b536-b929feba993f" />
-  <Project Path="9. Advanced Modern C++/9. Advanced Modern C++.vcxproj" Id="648e9093-f153-4e4f-8cef-79b73af38d2c" />
-  <Project Path="Exception Handling/Exception Handling.vcxproj" Id="ed29fc07-2306-4d04-b38e-ad3ff2718808" />
-  <Project Path="Standard Library Essentials/Standard Library Essentials.vcxproj" Id="0ad2a955-ca17-4270-8d9f-8d3be0ee746d" />
-  <Project Path="Templates and Generic Programming/Templates and Generic Programming.vcxproj" Id="f42d2a86-2bb0-46e5-a99a-e9a701e9fa58" />
 </Solution>
