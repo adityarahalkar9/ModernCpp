@@ -72,6 +72,12 @@ private:
 	int* m_dog_age{};
 public:
 	void displayInfo();
+	void set_dog_breed(std::string m_dog_breed){
+		this->m_dog_breed = m_dog_breed;
+	}
+	void set_dog_age(int age){
+		*(this->m_dog_age) = age;
+	}
 	Dog(){
 		m_dog_name = "Tommy";
 		m_dog_breed = "German shephard";
@@ -101,6 +107,10 @@ int pointerDestructor(){
 	delete dog1;
 
 	Dog dog2("Fluffy", "pitbull", 6);
+	dog2.displayInfo();
+
+	dog2.set_dog_age(12);
+	dog2.set_dog_breed("sled");
 	dog2.displayInfo();
 
 	return 0;

@@ -12,6 +12,8 @@ int basicDestructor();
 int explicitDestructor();
 int pointerDestructor();
 
+int thisKeyword();
+
 int basicInheritance();
 int singleInheritance();
 int multipleInheritance();
