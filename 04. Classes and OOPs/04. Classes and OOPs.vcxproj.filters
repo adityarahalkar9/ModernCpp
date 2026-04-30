@@ -27,19 +27,22 @@
     <ClCompile Include="03.destructors.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="04.inheritance.cpp">
+    <ClCompile Include="05.inheritance.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="05.operator_overloading.cpp">
+    <ClCompile Include="06.operator_overloading.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="06.virtual_functions.cpp">
+    <ClCompile Include="07.virtual_functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="07.interfaces.cpp">
+    <ClCompile Include="08.interfaces.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="08.polymorphism.cpp">
+    <ClCompile Include="09.polymorphism.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="04.this_keyword.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

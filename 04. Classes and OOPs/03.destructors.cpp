@@ -64,6 +64,50 @@ int explicitDestructor(){
 
 
 
+// Using destructors with dynamic memory.
+class Dog{
+private:
+	std::string m_dog_name{};
+	std::string m_dog_breed{};
+	int* m_dog_age{};
+public:
+	void displayInfo();
+	Dog(){
+		m_dog_name = "Tommy";
+		m_dog_breed = "German shephard";
+		m_dog_age = new int;
+		*m_dog_age = 3;
+	};
+	Dog(std::string name_param, std::string breed_param, int age_param) :
+		m_dog_name{name_param}, m_dog_breed{breed_param}, m_dog_age{new int{age_param}}{
+		std::cout << m_dog_name << " Constructed at: " << this << std::endl;		// this keyword used
+	}
+
+	~Dog(){
+		delete m_dog_age;
+		std::cout << "Dog destructor called for " << m_dog_name << " at " << this << std::endl;
+	}
+};
+void Dog::displayInfo(){
+	std::cout << m_dog_name << " " << m_dog_breed << " " << *m_dog_age << "\n";
+}
+int pointerDestructor(){
+	Dog dog("Tim", "pomerian", 4);
+	dog.displayInfo();
+
+	// Just for practicing using pointers
+	Dog* dog1 = new Dog();
+	dog1->displayInfo();
+	delete dog1;
+
+	Dog dog2("Fluffy", "pitbull", 6);
+	dog2.displayInfo();
+
+	return 0;
+}
+
+
+
 /*
 	CHARACTERISTICS OF A DESTRUCTOR
 	All the points mentioned below show the characteristics of a destructor:
@@ -86,40 +130,3 @@ int explicitDestructor(){
 	- Destructor is called when a delete operator is called.
 */
 
-// Using destructors with dynamic memory.
-class Dog{
-private:
-	std::string m_dog_name{};
-	std::string m_dog_breed{};
-	int* m_dog_age{};
-public:
-	void displayInfo();
-	Dog(){
-		m_dog_name = "Tommy";
-		m_dog_breed = "German shephard";
-		m_dog_age = new int;
-		*m_dog_age = 3;
-	};
-	Dog(std::string name_param, std::string breed_param, int age_param) :
-		m_dog_name{name_param}, m_dog_breed{breed_param}, m_dog_age{new int{age_param}}{
-		std::cout << m_dog_name << "Constructed at: " << this << std::endl;		// this keyword used
-	}
-
-	~Dog(){
-		delete m_dog_age;
-	}
-};
-void Dog::displayInfo(){
-	std::cout << m_dog_name << " " << m_dog_breed << " " << *m_dog_age << "\n";
-}
-int destructorExample(){
-	Dog dog("Tim", "pomerian", 4);
-	dog.displayInfo();
-
-	// Just for practicing using pointers
-	Dog* dog1 = new Dog();
-	dog1->displayInfo();
-	delete dog1;
-
-	return 0;
-}

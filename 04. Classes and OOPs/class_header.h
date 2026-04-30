@@ -10,6 +10,7 @@ int moveConstructor();
 
 int basicDestructor();
 int explicitDestructor();
+int pointerDestructor();
 
 int basicInheritance();
 int singleInheritance();

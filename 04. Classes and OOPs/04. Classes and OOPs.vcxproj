@@ -131,11 +131,12 @@
     <ClCompile Include="01.basic_class.cpp" />
     <ClCompile Include="02.constructors.cpp" />
     <ClCompile Include="03.destructors.cpp" />
-    <ClCompile Include="04.inheritance.cpp" />
-    <ClCompile Include="05.operator_overloading.cpp" />
-    <ClCompile Include="06.virtual_functions.cpp" />
-    <ClCompile Include="07.interfaces.cpp" />
-    <ClCompile Include="08.polymorphism.cpp" />
+    <ClCompile Include="04.this_keyword.cpp" />
+    <ClCompile Include="05.inheritance.cpp" />
+    <ClCompile Include="06.operator_overloading.cpp" />
+    <ClCompile Include="07.virtual_functions.cpp" />
+    <ClCompile Include="08.interfaces.cpp" />
+    <ClCompile Include="09.polymorphism.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
