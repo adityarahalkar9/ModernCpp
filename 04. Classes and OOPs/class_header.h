@@ -21,6 +21,7 @@ int multilevelInheritance();
 int hierarchicalInheritance();
 int hybridInheritance();
 
+int basicOperatorOverloading();
 int complexOverload();
 int smartPointerOverloads();
 int functionOverloading();
