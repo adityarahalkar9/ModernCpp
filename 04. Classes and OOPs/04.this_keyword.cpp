@@ -1,6 +1,32 @@
 import std;
 #include "class_header.h"
 
+/*
+	In C++, the this keyword is an implicit pointer available within the 
+	non-static member functions of a class or struct. It points to the specific 
+	instance of the object that is currently executing the code.
+*/
+// Basic usage of this operator
+void PrintEntity(BasicThis::Entity* e);
+namespace BasicThis{
+	class Entity{
+	public:
+		int x, y;
+		Entity(int x, int y){
+			this->x = x;
+			this->y = y;
+			PrintEntity(this);
+		}
+		int getx() const{
+			return x;
+		}
+	};
+}
+void PrintEntity(BasicThis::Entity* e){
+	// Print something
+}
+
+
 namespace This{
 	class Dog{
 	private:
